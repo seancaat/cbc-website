@@ -1,14 +1,11 @@
 <script>
-	import Counter from './Counter.svelte';
-	import welcome from '$lib/images/svelte-welcome.webp';
-	import welcome_fallback from '$lib/images/svelte-welcome.png';
-	
-
 	/** @type {import('./$types').PageData} */
 	export let data;
 
-	$: console.log(data);
+	let props = data.props;
 
+	let manifesto = props.find(e => e.role === 'intro').value
+	console.log(manifesto);
 </script>
 
 <svelte:head>
@@ -18,7 +15,7 @@
 
 <section>
 	<h1>
-		{data}
+		{manifesto}
 	</h1>
 </section>
 
