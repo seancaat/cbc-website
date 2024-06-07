@@ -1,18 +1,34 @@
 <script>
 	import { page } from '$app/stores';
-
-	// let links = 
+	import Logo from '$lib/icons/Logo.svelte'
 </script>
 
 <header>
 	<nav>
 		<ul>
+			<li>
+				<a>Home</a>
+			</li>
+			<li>
+				<a>About</a>
+			</li>
+			<li>
+				<a>Shop</a>
+			</li>
+			<li>
+				<a>In the Paint</a>
+			</li>
 		</ul>
 	</nav>
 </header>
 
 <style>
 	header {
+		
+		position: relative;
+		z-index: 2;
+	}
+	nav {
 		display: flex;
 		justify-content: space-between;
 	}
@@ -39,7 +55,6 @@
 	nav {
 		display: flex;
 		justify-content: center;
-		--background: rgba(255, 255, 255, 0.7);
 	}
 
 	svg {
@@ -97,6 +112,6 @@
 	}
 
 	a:hover {
-		color: var(--color-theme-1);
+		border-bottom: 2px solid white;
 	}
 </style>

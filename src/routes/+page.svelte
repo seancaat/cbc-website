@@ -1,10 +1,24 @@
 <script>
 	/** @type {import('./$types').PageData} */
+	import Logo from '$lib/icons/Logo.svelte';
 	export let data;
 
 	let props = data.props;
 
-	let manifesto = props.find(e => e.role === 'intro').value
+	let manifesto = props.find(e => e.role === 'intro').value;
+	let splitManifesto = ["", ""];
+
+	const openingTag = '<strong>';
+	const closingTag = '</strong>';
+
+	const openingTagIndex = manifesto.indexOf(openingTag);
+	const closingTagIndex = manifesto.indexOf(closingTag);
+
+	if (openingTagIndex !== -1 && closingTagIndex !== -1) {
+	    splitManifesto[0] = manifesto.slice(0, openingTagIndex);
+	    splitManifesto[1] = manifesto.slice(closingTagIndex + closingTag.length);
+	}
+
 	console.log(manifesto);
 </script>
 
@@ -15,8 +29,15 @@
 
 <section>
 	<h1>
-		{manifesto}
+		<span>
+			{splitManifesto[0]}
+			<Logo height={38.4} fill={"white"}/>
+			{splitManifesto[1]}
+		</span>
 	</h1>
+	<button>
+		Read More
+	</button>
 </section>
 
 <style>
@@ -25,11 +46,21 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		flex: 0.6;
+		flex: 1;
+		background-image: url("$lib/images/dustin.jpg");
+		background-size: cover;
+		background-position: 40% 50%;
+		height: 100%;
 	}
 
 	h1 {
-		width: 100%;
+		font-weight: 700;
+		width: 20em;
+		text-align: left;
+	}
+
+	button {
+		display: block;
 	}
 
 	.welcome {
