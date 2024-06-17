@@ -31,5 +31,11 @@
 		"vitest": "^0.25.8",
 		"web-vitals": "^3.5.0"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"@shopify/shopify-api": "^11.0.0",
+		"@shopify/storefront-api-client": "^1.0.0",
+		"axios": "^1.7.2",
+		"dotenv": "^16.4.5"
+	}
 }

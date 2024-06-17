@@ -28,15 +28,11 @@
   		</span>
   	</h1>
   </div>
-	<button>
-		Read More
-	</button>
 </section>
 
 <style>
   section {
     color: white;
-    outline: 1px solid red;
     height: 70vh;
   }
 

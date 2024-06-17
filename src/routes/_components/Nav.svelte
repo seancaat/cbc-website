@@ -1,4 +1,5 @@
 <script>
+	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import Logo from '$lib/icons/Logo.svelte'
 </script>
@@ -7,13 +8,13 @@
 	<nav>
 		<ul>
 			<li>
-				<a>Home</a>
+				<a href="/">Home</a>
 			</li>
 			<li>
-				<a>About</a>
+				<a href="/about">About</a>
 			</li>
 			<li>
-				<a>Shop</a>
+				<a href="/shop">Shop</a>
 			</li>
 			<li>
 				<a>In the Paint</a>
