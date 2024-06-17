@@ -233,7 +233,8 @@
     text-decoration: none;
     border-radius: 999px;
     display: inline-block;
-    margin-bottom: 4rem;
+    margin-bottom: 8rem;
+    text-align: center;
   }
 
   span.spacer {
