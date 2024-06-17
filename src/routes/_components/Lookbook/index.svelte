@@ -135,7 +135,7 @@
     {
       src: chromeT_1,
       gridStart: 4,
-      gridEnd: 8
+      gridEnd: 10
     },
   ];
   let merch2022 = [
@@ -290,6 +290,7 @@
 
   span.spacer {
     flex-grow: 1;
+    transform: translateY(-2px);
     border-bottom: 2px dotted white;
   }
 
