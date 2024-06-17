@@ -18,6 +18,9 @@
 
   import manifestoT from '$lib/images/lookbook/The Manifesto Tee(Caren Wenqing Ye).jpg';
 
+  import chromeT_1 from '$lib/images/lookbook/CBC Chrome Tee (Lu Zhang) and Milk Tea Tee(Connor Sen Warnick, Herb Tam).jpeg';
+  import chromeT_2 from '$lib/images/lookbook/CBC Chrome Tee(Andrew Liu).jpeg';
+
 	import { each } from 'svelte/internal';
 
   import GridWrapper from './GridWrapper.svelte';
@@ -123,6 +126,25 @@
     }
   ];
 
+  let images2022 = [
+    {
+      src: chromeT_2,
+      gridStart: 1,
+      gridEnd: 7
+    }, 
+    {
+      src: chromeT_1,
+      gridStart: 4,
+      gridEnd: 8
+    },
+  ];
+  let merch2022 = [
+    {
+      name:"Chrome T-shirt",
+      price: "$35",
+    },
+  ];
+
 </script>
 
 <section class="lookbook">
@@ -186,6 +208,35 @@
       </ul>
       <div class="button-wrap">
         <a class="shop" href="#">SHOP 2023 COLLECTION</a>
+      </div>
+    </GridWrapper>
+  </div>
+
+  <div class="2022">
+    {#each images2022 as item}
+      <GridWrapper>
+        <div class="item" style="grid-column: {item.gridStart} / {item.gridEnd} ;">
+          <img 
+            class="lookbook-img"  
+            src={item.src}
+            alt='' />
+        </div>
+      </GridWrapper>
+    {/each}
+    <GridWrapper>
+      <ul class="menu">
+        {#each merch2022 as item}
+          <li>
+            <a href="#">
+              <span>{item.name}</span>
+            </a>
+            <span class="spacer"></span>
+            <span>{item.price}</span>
+          </li>
+        {/each}
+      </ul>
+      <div class="button-wrap">
+        <a class="shop" href="#">SHOP 2022 COLLECTION</a>
       </div>
     </GridWrapper>
   </div>
