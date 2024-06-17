@@ -3,7 +3,7 @@
 
 	export let data;
 	let products = data.props.products;
-	$: console.log(products);
+	let collections = data.props.collections;
 
 </script>
 
@@ -18,11 +18,13 @@
 	<div>
 		{#each products as product }
 			<div class="product">
+				
+				<!-- <div>{@html product.descriptionHtml}</div> -->
+				{#each product.images.edges as { node: image }}
+					<img src={image.originalSrc} alt={image.altText} width="200" />
+				{/each}
 				<h2>{product.title}</h2>
-				<!-- <div>{@html node.descriptionHtml}</div> -->
-				<!-- {#each node.images.edges as { node: image }} -->
-					<!-- <img src={image.originalSrc} alt={image.altText} width="200" /> -->
-				<!-- {/each} -->
+				<p>${product.priceRange.maxVariantPrice.amount}0</p>
 			</div>
 		{/each}
 	</div>

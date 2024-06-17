@@ -15,12 +15,18 @@ export async function load() {
   let productsCleaned = products.map(e => { return {
       id: e.node.id,
       title: e.node.title,
-      handle: e.node.handle
+      handle: e.node.handle,
+      descriptionHtml: e.node.descriptionHtml,
+      options: e.node.options,
+      priceRange: e.node.priceRange,
+      variants: e.node.variants,
+      images: e.node.images,
     } 
   });
   return {
     props: {
       products: productsCleaned,
+      collections: collections,
     }
   }
 }
@@ -29,19 +35,78 @@ async function getAllProducts() {
   const productQuery = `
     query {
     products(first:10) {
-      edges {
-        node {
-          id
-          title
-          handle
+    edges{
+            node {
+                id
+                handle
+                availableForSale
+                title
+                description
+                descriptionHtml
+                options {
+                    id
+                    name
+                    values
+                }
+                priceRange {
+                    maxVariantPrice {
+                        amount
+                        currencyCode
+                    }
+                    minVariantPrice {
+                        amount
+                        currencyCode
+                    }
+                }
+                variants(first: 4) {
+                    pageInfo {
+                        hasNextPage
+                        hasPreviousPage
+                    }
+                    edges {
+                        node {
+                            id
+                            title
+                            sku
+                            availableForSale
+                            requiresShipping
+                            selectedOptions {
+                                name
+                                value
+                            }
+                            priceV2 {
+                                amount
+                                currencyCode
+                            }
+                            compareAtPriceV2 {
+                                amount
+                                currencyCode
+                            }
+                        }
+                    }
+                }
+                images(first: 1) {
+                    pageInfo {
+                        hasNextPage
+                        hasPreviousPage
+                    }
+                    edges {
+                        node {
+                        originalSrc
+                        altText
+                        width
+                        height
+                        }
+                    }
+                }
+            }
         }
       }
-    }
-  }
-  `;
+    }`;
 
   const {data, errors, extensions} = await client.request(productQuery);
 
+  // console.log(data.products.edges);
   return data.products.edges;
 }
 
@@ -66,26 +131,6 @@ async function getCollections() {
 
   const {data, errors, extensions} = await client.request(collectionQuery);
   return data.collections.edges;
-}
-
-async function getProductVariants(id) {
-  const variantQuery = `
-  {
-    node(id: "{`+ id + `}") {
-      id
-      ... on Product {
-        variants(first: 5) {
-          edges {
-            node {
-              id
-            }
-          }
-        }
-      }
-    }
-  }`
-
-
 }
 
 

@@ -26,7 +26,7 @@
 	font-family: 'AliasMedium';
 	src: url('/fonts/RTAliasMedium-RegularOblique.woff2') format('woff2'),
 			 url('/fonts/RTAliasMedium-RegularOblique.woff') format('woff');
-	font-weight: normal;
+	font-weight: 400;
 	font-style: italic;
 }
 
@@ -43,7 +43,7 @@
 	src: url('/fonts/RTAliasMedium-LightOblique.woff2') format('woff2'),
 			 url('/fonts/RTAliasMedium-LightOblique.woff') format('woff');
 	font-weight: 100;
-	font-style: normal;
+	font-style: italic;
 }
 
 

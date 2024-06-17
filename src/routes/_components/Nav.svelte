@@ -17,7 +17,7 @@
 				<a href="/shop">Shop</a>
 			</li>
 			<li>
-				<a href="/blog">In the Paint</a>
+				<a href="/blog">"In the Paint"</a>
 			</li>
 		</ul>
 	</nav>
