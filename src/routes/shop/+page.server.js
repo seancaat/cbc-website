@@ -1,27 +1,6 @@
-import { getAllCollections } from '$lib/shopify.js';
-// import { error } from '@sveltejs/kit';
+// This gets one item
 
-
-// export async function load({ url }) {
-//   const res = await getAllCollections();
-//   if (res.status === 200) {
-//     const products = res.body?.data?.collections?.edges;
-
-//     if (products) {
-//       return { products };
-//     }
-//     throw error(404);
-//   } else {
-//     throw error(res.status);
-//   }
-// }
-
-
-import {
-  createStorefrontApiClient,
-  CustomFetchApi,
-} from '@shopify/storefront-api-client';
-import {fetch as nodeFetch} from 'node-fetch';
+import { createStorefrontApiClient } from '@shopify/storefront-api-client';
 import { VITE_SHOPIFY_STORE_URL, VITE_SHOPIFY_API_ENDPOINT, VITE_SHOPIFY_STOREFRONT_API_TOKEN } from '$env/static/private';
 
 const client = createStorefrontApiClient({
@@ -30,24 +9,84 @@ const client = createStorefrontApiClient({
   publicAccessToken: VITE_SHOPIFY_STOREFRONT_API_TOKEN,
 });
 
-const productQuery = `
-  query ProductQuery($handle: String) {
-    product(handle: $handle) {
-      id
-      handle
-      availableForSale
-      title
-      description
-      descriptionHtml 
+export async function load() {
+  const collections = await getCollections();
+  let products = await getAllProducts();
+  let productsCleaned = products.map(e => { return {
+      id: e.node.id,
+      title: e.node.title,
+      handle: e.node.handle
+    } 
+  });
+  return {
+    props: {
+      products: productsCleaned,
     }
   }
-`;
+}
 
-const {data, errors, extensions} = await client.request(productQuery, {
-  variables: {
-    handle: 'all-star-shorts',
-  },
-});
+async function getAllProducts() {
+  const productQuery = `
+    query {
+    products(first:10) {
+      edges {
+        node {
+          id
+          title
+          handle
+        }
+      }
+    }
+  }
+  `;
 
-console.log(data);
+  const {data, errors, extensions} = await client.request(productQuery);
+
+  return data.products.edges;
+}
+
+async function getCollections() {
+  const collectionQuery = 
+  `query getCollections {
+    collections(first: 10) {
+      edges {
+        cursor
+        node {
+          id
+          handle
+          title
+        }
+      }
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+      }
+    }
+  }`
+
+  const {data, errors, extensions} = await client.request(collectionQuery);
+  return data.collections.edges;
+}
+
+async function getProductVariants(id) {
+  const variantQuery = `
+  {
+    node(id: "{`+ id + `}") {
+      id
+      ... on Product {
+        variants(first: 5) {
+          edges {
+            node {
+              id
+            }
+          }
+        }
+      }
+    }
+  }`
+
+
+}
+
+
 

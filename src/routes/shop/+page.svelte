@@ -1,8 +1,9 @@
 <script>
 	import { onMount } from 'svelte';
-	// import { VITE_SHOPIFY_API_ENDPOINT } from '$env/static/private';
 
-	let products = [];
+	export let data;
+	let products = data.props.products;
+	$: console.log(products);
 
 </script>
 
@@ -15,13 +16,13 @@
 <div class="text-column">
 	<h1>Shop</h1>
 	<div>
-		{#each products as { node }}
+		{#each products as product }
 			<div class="product">
-				<h2>{node.title}</h2>
-				<div>{@html node.descriptionHtml}</div>
-				{#each node.images.edges as { node: image }}
-					<img src={image.originalSrc} alt={image.altText} width="200" />
-				{/each}
+				<h2>{product.title}</h2>
+				<!-- <div>{@html node.descriptionHtml}</div> -->
+				<!-- {#each node.images.edges as { node: image }} -->
+					<!-- <img src={image.originalSrc} alt={image.altText} width="200" /> -->
+				<!-- {/each} -->
 			</div>
 		{/each}
 	</div>

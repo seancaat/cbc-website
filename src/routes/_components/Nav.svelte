@@ -17,7 +17,7 @@
 				<a href="/shop">Shop</a>
 			</li>
 			<li>
-				<a>In the Paint</a>
+				<a href="/blog">In the Paint</a>
 			</li>
 		</ul>
 	</nav>
@@ -47,6 +47,11 @@
 	li {
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
+		font-weight: 700;
+	}
+
+	li a {
+		text-decoration: none;
 	}
 	
 </style>

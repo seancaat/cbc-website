@@ -20,7 +20,5 @@
 <Top {manifesto} />
 <Lookbook />
 
-<p>stuff after</p>
-
 <style>
 </style>
