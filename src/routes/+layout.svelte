@@ -38,53 +38,6 @@
 </div>
 
 <style>
-	@font-face {
-		font-family: 'AliasMedium';
-		src: url('fonts/RTAliasMedium-Regular.woff2') format('woff2'),
-				 url('fonts/RTAliasMedium-Regular.woff') format('woff');
-		font-weight: normal;
-		font-style: normal;
-	}
-
-	@font-face {
-		font-family: 'AliasMedium';
-		src: url('fonts/RTAliasMedium-Bold.woff2') format('woff2'),
-				 url('fonts/RTAliasMedium-Bold.woff') format('woff');
-		font-weight: 700;
-		font-style: normal;
-	}
-
-	@font-face {
-		font-family: 'AliasMedium';
-		src: url('fonts/RTAliasMedium-Light.woff2') format('woff2'),
-				 url('fonts/RTAliasMedium-Light.woff') format('woff');
-		font-weight: 100;
-		font-style: normal;
-	}
-
-	@font-face {
-		font-family: 'AliasMedium';
-		src: url('fonts/RTAliasMedium-RegularOblique.woff2') format('woff2'),
-				 url('fonts/RTAliasMedium-RegularOblique.woff') format('woff');
-		font-weight: normal;
-		font-style: italic;
-	}
-
-	@font-face {
-		font-family: 'AliasMedium';
-		src: url('fonts/RTAliasMedium-BoldOblique.woff2') format('woff2'),
-				 url('fonts/RTAliasMedium-BoldOblique.woff') format('woff');
-		font-weight: 700;
-		font-style: italic;
-	}
-
-	@font-face {
-		font-family: 'AliasMedium';
-		src: url('fonts/RTAliasMedium-LightOblique.woff2') format('woff2'),
-				 url('fonts/RTAliasMedium-LightOblique.woff') format('woff');
-		font-weight: 100;
-		font-style: normal;
-	}
 	.app {
 		min-height: 100vh;
 	}
