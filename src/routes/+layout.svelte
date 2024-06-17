@@ -2,7 +2,7 @@
 	import { browser } from '$app/environment';
 	import { page } from '$app/stores';
 	import { webVitals } from '$lib/vitals';
-	import Header from './Header.svelte';
+	import Nav from './_components/Nav.svelte';
 	import './styles.css';
 
 	/** @type {import('./$types').LayoutServerData} */
@@ -18,7 +18,7 @@
 </script>
 
 <div class="app">
-	<Header />
+	<Nav />
 
 	<main>
 		<slot />
@@ -31,19 +31,10 @@
 
 <style>
 	.app {
-		/* min-height: 100vh; */
-		display: flex;
-		flex-direction: column;
+		min-height: 100vh;
 	}
 
 	main {
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		right: 0;
-		left: 0;
-		display: flex;
-		flex-direction: column;
 		width: 100%;
 		margin: 0 auto;
 		box-sizing: border-box;
@@ -54,9 +45,6 @@
 		justify-content: center;
 		align-items: center;
 		outline: 1px solid red;
-		position: absolute;
-		bottom: 0px;
-		z-index: 2;
 	}
 
 	footer a {
