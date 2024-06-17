@@ -18,12 +18,12 @@
   svg {
     margin-right: -0.25em;
     transform: translateY(0.1em);
-    height: 22px;
+    height: 0.9em;
   }
 
   @media screen and (min-width: 1024px) {
     svg {
-      height: 44px;
+      height: 0.92em;
     }
   }
 </style>

@@ -6,6 +6,8 @@
 
 	let props = data.props;
 
+	// console.log(data);
+
 	let manifesto = props.find(e => e.role === 'intro').value;
 	
 </script>
