@@ -1,12 +1,12 @@
 // This gets one item
-
 import { createStorefrontApiClient } from '@shopify/storefront-api-client';
-import { VITE_SHOPIFY_STORE_URL, VITE_SHOPIFY_API_ENDPOINT, VITE_SHOPIFY_STOREFRONT_API_TOKEN } from '$env/static/private';
+import { env } from '$env/dynamic/private';
+// import { VITE_SHOPIFY_STORE_URL, VITE_SHOPIFY_API_ENDPOINT, VITE_SHOPIFY_STOREFRONT_API_TOKEN } from '$env/dynamic/private';
 
 const client = createStorefrontApiClient({
-  storeDomain: VITE_SHOPIFY_STORE_URL,
+  storeDomain: env.VITE_SHOPIFY_STORE_URL,
   apiVersion: '2023-10',
-  publicAccessToken: VITE_SHOPIFY_STOREFRONT_API_TOKEN,
+  publicAccessToken: env.VITE_SHOPIFY_STOREFRONT_API_TOKEN,
 });
 
 export async function load() {
