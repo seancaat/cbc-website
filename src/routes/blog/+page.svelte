@@ -15,8 +15,15 @@
 
   <section class='entry'>
     <h2>GUAVABABA - GB Stories Vol. 1</h2>
-    <span>Andrew Liu, Connor Sen Warnick, Benji Hsu</span>
-    <iframe src="https://player.vimeo.com/video/907294942?h=f9d5d36a74&byline=0&portrait=0" width="500" height="281.25" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+    <p>Andrew Liu, Connor Sen Warnick, Benji Hsu</p>
+    <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/907294942?h=f9d5d36a74&title=0&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tellus risus, pulvinar sed feugiat nec, tempor in nibh. </p>
+  </section>
+
+  <section class='entry'>
+    <h2>Characters Disappearing</h2>
+    <p>Connor Sen Warnick</p>
+    <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/775998654?h=b618a89590&title=0&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tellus risus, pulvinar sed feugiat nec, tempor in nibh. </p>
   </section>
   
@@ -40,7 +47,13 @@
   .entry {
     margin-top: 4rem;
     padding-top: 4rem;
-    border-top: 2px solid white;
+    border-top: 2px solid rgba(255, 255, 255, 0.516);
+    padding-bottom: 3rem;
+  }
+
+  .entry:last-of-type {
+    margin-top: 0;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.516);
   }
 
 	img {
@@ -48,10 +61,10 @@
 		max-width: 100%;
 	}
 
-  iframe {
+  /* iframe {
     display: block;
     margin: 2rem auto;
-  }
+  } */
 
 	.text-column {
     margin: 10rem auto;
@@ -62,6 +75,9 @@
 
   h2 {
     margin-bottom: 0;
+  }
+  h2 + p {
+    margin-top: 0;
   }
 
   @media screen and (min-width: 1024px) {
