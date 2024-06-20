@@ -23,6 +23,7 @@
     height: 100%;
     min-height: 100lvh;
     object-fit: cover;
+    object-position: 50% 50%;
     -webkit-user-drag: none;
     -khtml-user-drag: none;
     -moz-user-drag: none;
