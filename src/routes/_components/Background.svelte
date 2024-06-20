@@ -21,6 +21,7 @@
     width: 100%;
     /* outline: 4px dashed red; */
     height: 100%;
+    min-height: 100lvh;
     object-fit: cover;
     -webkit-user-drag: none;
     -khtml-user-drag: none;
