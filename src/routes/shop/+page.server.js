@@ -11,23 +11,14 @@ const client = createStorefrontApiClient({
 
 export async function load() {
   const collections = await getCollections();
-  let products = await getAllProducts();
-  let productsCleaned = products.map(e => { return {
-      id: e.node.id,
-      title: e.node.title,
-      handle: e.node.handle,
-      descriptionHtml: e.node.descriptionHtml,
-      options: e.node.options,
-      priceRange: e.node.priceRange,
-      variants: e.node.variants,
-      images: e.node.images,
-    } 
-  });
+  let handles = collections.map(e => e.node.handle);
+  let data = {};
+
+  let products2023 = cleanProducts(await getProductsInCollection(handles[0]));
+  let products2024 = cleanProducts(await getProductsInCollection(handles[1]));
+
   return {
-    props: {
-      products: productsCleaned,
-      collections: collections,
-    }
+    props: [products2024, products2023],
   }
 }
 
@@ -35,7 +26,7 @@ async function getAllProducts() {
   const productQuery = `
     query {
     products(first:10) {
-    edges{
+      edges{
             node {
                 id
                 handle
@@ -133,5 +124,73 @@ async function getCollections() {
   return data.collections.edges;
 }
 
+async function getProductsInCollection(handle) {
+  const query = `
+    query getProductsInCollection {
+    collection(handle: "` + handle + `") {
+      id
+      title
+      products(first: 50, sortKey: BEST_SELLING) {
+        edges {
+          node {
+            id
+            handle
+            availableForSale
+            title
+            description
+            descriptionHtml
+            options {
+              id
+              name
+              values
+            }
+            images(first: 1) {
+              edges {
+                node {
+                  id
+                  url
+                  width
+                  height
+                  altText
+                }
+              }
+            }
+            priceRange {
+              minVariantPrice {
+                amount
+                currencyCode
+              }
+              maxVariantPrice {
+                amount
+                currencyCode
+              }
+            }
+          }
+        }
+      }
+    }
+  }`
+
+  const {data, errors, extensions} = await client.request(query);
+
+  return data.collection;
+}
 
 
+function cleanProducts(collection) {
+  let title = collection.title;
+  let productsCleaned = collection.products.edges.map(e => { return {
+    id: e.node.id,
+    title: e.node.title,
+    handle: e.node.handle,
+    descriptionHtml: e.node.descriptionHtml,
+    options: e.node.options,
+    priceRange: e.node.priceRange,
+    images: e.node.images,
+  }});
+
+  return {
+    title: title,
+    products: productsCleaned,
+  };
+}

@@ -3,10 +3,9 @@
 	import { onMount } from 'svelte';
 
 	export let data;
-	let products = data.props.products;
-	let collections = data.props.collections;
+	let collections = data.props;
 
-	$: console.log(products[0].variants.edges);
+	$: console.log(collections[1].products[0].images.edges[0].node);
 
 </script>
 
@@ -19,28 +18,34 @@
 <div class="text-column">
 	<h1>Shop</h1>
 	<div>
-		{#each products as product }
-			<div class="product">
-				<h2>
-					<a href={`shop/products/${product.handle}`}>
-						{#each product.images.edges as { node: image }}
-							<img src={image.originalSrc} alt={image.altText} width="200" />
-						{/each}
-					</a>
-					<p class="product-name">
+		{#each collections as collection}
+			<h2>{collection.title}</h2>
+			{#each collection.products as product }
+				<div class="product">
+					<h2>
 						<a href={`shop/products/${product.handle}`}>
-							{product.title}
+							{#each product.images.edges as {node} }
+								<img src={node.url} alt={node.altText} width="200" />
+							{/each}
 						</a>
-						<span class="spacer"></span>
-						<span>
-							${product.priceRange.maxVariantPrice.amount}0
-						</span>
-					</p>
-				</h2>
-				
-			</div>
+						<p class="product-name">
+							<a href={`shop/products/${product.handle}`}>
+								{product.title}
+							</a>
+							<span class="spacer"></span>
+							<span>
+								${product.priceRange.maxVariantPrice.amount}0
+							</span>
+						</p>
+					</h2>
+					
+				</div>
+			{/each}
 		{/each}
 	</div>
+	<!-- <div>
+		
+	</div> -->
 </div>
 
 <style>
