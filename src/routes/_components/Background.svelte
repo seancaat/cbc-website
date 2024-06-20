@@ -12,7 +12,7 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 100dvh;
+    height: 100lvh;
     z-index: 0;
   }
   
