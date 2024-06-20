@@ -1,9 +1,12 @@
 <script>
+	import { goto } from '$app/navigation';
 	import { onMount } from 'svelte';
 
 	export let data;
 	let products = data.props.products;
 	let collections = data.props.collections;
+
+	$: console.log(products[0].variants.edges);
 
 </script>
 
@@ -18,13 +21,23 @@
 	<div>
 		{#each products as product }
 			<div class="product">
+				<h2>
+					<a href={`shop/products/${product.handle}`}>
+						{#each product.images.edges as { node: image }}
+							<img src={image.originalSrc} alt={image.altText} width="200" />
+						{/each}
+					</a>
+					<p class="product-name">
+						<a href={`shop/products/${product.handle}`}>
+							{product.title}
+						</a>
+						<span class="spacer"></span>
+						<span>
+							${product.priceRange.maxVariantPrice.amount}0
+						</span>
+					</p>
+				</h2>
 				
-				<!-- <div>{@html product.descriptionHtml}</div> -->
-				{#each product.images.edges as { node: image }}
-					<img src={image.originalSrc} alt={image.altText} width="200" />
-				{/each}
-				<h2>{product.title}</h2>
-				<p>${product.priceRange.maxVariantPrice.amount}0</p>
 			</div>
 		{/each}
 	</div>
@@ -34,6 +47,13 @@
 	img {
 		width: 100%;
 		max-width: 100%;
+	}
+
+	.product-name {
+		margin-top: 0.25em;
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 2em;
 	}
 
 	.text-column {

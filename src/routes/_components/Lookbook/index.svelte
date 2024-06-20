@@ -62,18 +62,22 @@
     {
       name:"2023 Autumn Classic Jersey",
       price: "$60",
+      href: "shop/products/cbc-official-reversible-2023-tournament-mesh-jersey",
     },
     {
       name:"The Triple Threat Hat",
       price: "$38",
+      href: "shop/products/the-triple-threat-hat",
     },
     {
       name:"The Manifesto Tee",
       price: "$48",
+      href: "shop/products/the-manifesto-tee",
     },
     {
       name: "Chameleon Drawstring Backpack",
       price: "$15",
+      href: "shop/products/chameleon-drawstring-backpacks",
     }
   ];
 
@@ -115,14 +119,17 @@
     {
       name:"Net Bag",
       price: "$90",
+      href: "shop/products/net-bag"
     },
     {
       name:"All Star Shorts",
       price: "$48",
+      href: "shop/products/all-star-shorts"
     },
     {
       name:"Turbo Socks",
       price: "$16",
+      href: "shop/products/cbc-turbo-socks"
     }
   ];
 
@@ -166,7 +173,7 @@
       <ul class="menu">
         {#each merch2024 as item}
           <li>
-            <a href="#">
+            <a href={item.href}>
               <span>{item.name}</span>
             </a>
             <span class="spacer"></span>
@@ -175,7 +182,7 @@
         {/each}
       </ul>
       <div class="button-wrap">
-        <a class="shop" href="#">SHOP 2024 COLLECTION</a>
+        <a class="shop" href="/shop">SHOP 2024 COLLECTION</a>
       </div>
     </GridWrapper>
   </div>
@@ -198,7 +205,7 @@
       <ul class="menu">
         {#each merch2023 as item}
           <li>
-            <a href="#">
+            <a href={item.href}>
               <span>{item.name}</span>
             </a>
             <span class="spacer"></span>
@@ -207,7 +214,7 @@
         {/each}
       </ul>
       <div class="button-wrap">
-        <a class="shop" href="#">SHOP 2023 COLLECTION</a>
+        <a class="shop" href="/shop">SHOP 2023 COLLECTION</a>
       </div>
     </GridWrapper>
   </div>

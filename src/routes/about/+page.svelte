@@ -8,7 +8,6 @@
 </svelte:head>
 
 <div class="text-column">
-	<h1>Chinatown Basketball Club</h1>
 	<figure>
 		<img src={benji} alt=''/>
 		<figcaption>
