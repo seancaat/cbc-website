@@ -2,8 +2,8 @@
    import src from '$lib/images/dustin.jpg';
 </script>
 
-<div class="image-wrapper">
-  <img class="topper-image" alt='' {src} />
+<div class="image-wrapper" style="background-image: url('{src}')">
+  <!-- <img class="topper-image" alt='' {src} /> -->
 </div>
 
 <style>
@@ -14,6 +14,8 @@
     right: 0;
     height: 100lvh;
     z-index: 0;
+    background-size: cover;
+    background-position: 50% 50%;
   }
   
   .topper-image {
