@@ -27,7 +27,6 @@
 			}
       await loadCart();
     }
-
   });
 
 	async function callCreateCart() {

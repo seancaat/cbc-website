@@ -10,8 +10,6 @@
   let selectedOptions = {};
   let cartLoading = false;
 
-  // console.log(JSON.parse(localStorage.getItem('cartId')));
-
   async function addToCart() {
     cartLoading = true;
     let variantId;
