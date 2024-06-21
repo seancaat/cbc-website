@@ -23,13 +23,13 @@
 			{#each collection.products as product }
 				<div class="product">
 					<h2>
-						<a href={`shop/products/${product.handle}`}>
+						<a href={`/products/${product.handle}`}>
 							{#each product.images.edges as {node} }
 								<img src={node.url} alt={node.altText} width="200" />
 							{/each}
 						</a>
 						<p class="product-name">
-							<a href={`shop/products/${product.handle}`}>
+							<a href={`/products/${product.handle}`}>
 								{product.title}
 							</a>
 							<span class="spacer"></span>
