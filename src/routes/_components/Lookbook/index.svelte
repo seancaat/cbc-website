@@ -24,7 +24,6 @@
 	import { each } from 'svelte/internal';
 
   import GridWrapper from './GridWrapper.svelte';
-  import Menu from './Menu.svelte';
 
   let images2023 = [
     {
@@ -80,7 +79,6 @@
       href: "products/chameleon-drawstring-backpacks",
     }
   ];
-
 
   let images2024 = [
     {
@@ -243,7 +241,7 @@
         {/each}
       </ul>
       <div class="button-wrap">
-        <a class="shop" href="#">SHOP 2022 COLLECTION</a>
+        <a class="shop" href="/shop">SHOP 2022 COLLECTION</a>
       </div>
     </GridWrapper>
   </div>
@@ -274,7 +272,7 @@
     grid-column: 1 / -1;
   }
 
-  h2, .button-wrap {
+  .button-wrap {
     grid-column: 1 / -1;
   }
   

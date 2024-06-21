@@ -1,8 +1,7 @@
 <script>
-  import { getCartItems } from '$lib/store.js';
+  import { cart, getCartItems } from '$lib/store.js';
 
   export let data;
-  console.log(data);
 
   let title = data.product.title;
   let images = data.product.images.edges;
@@ -11,14 +10,16 @@
   let selectedOptions = {};
   let cartLoading = false;
 
+  // console.log(JSON.parse(localStorage.getItem('cartId')));
+
   async function addToCart() {
     cartLoading = true;
     let variantId;
     let cartId;
 
-    if (typeof window !== 'undefined') {
-      cartId = JSON.parse(localStorage.getItem('cartId'));
-    }
+    // if (typeof window !== 'undefined') {
+    cartId = JSON.parse(localStorage.getItem('cartId'));
+    // }
 
     data.product.variants.edges.forEach((variant) => {
       let result = variant.node.selectedOptions.every((option) => {
@@ -49,7 +50,7 @@
     <main>
       <h1>{title}</h1>
       <p>{@html description}</p>
-      <button on:click={ addToCart() }>Add to cart</button>
+      <button on:click={ addToCart }>Add to cart</button>
     </main>
     
     <aside>
@@ -74,7 +75,8 @@
   main {
     max-width: 500px;
     position: sticky;
-    top: 0;
+    top: 6rem;
+    height: min-content;
   }
 
   h1 {
@@ -131,8 +133,6 @@
 
     .image-wrapper {
       flex-shrink: 0;
-    }
-
-    
+    }    
   }
 </style>

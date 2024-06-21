@@ -1,7 +1,6 @@
 // This gets one item
 import { createStorefrontApiClient } from '@shopify/storefront-api-client';
 import { env } from '$env/dynamic/private';
-// import { VITE_SHOPIFY_STORE_URL, VITE_SHOPIFY_API_ENDPOINT, VITE_SHOPIFY_STOREFRONT_API_TOKEN } from '$env/dynamic/private';
 
 const client = createStorefrontApiClient({
   storeDomain: env.VITE_SHOPIFY_STORE_URL,

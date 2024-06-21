@@ -5,6 +5,9 @@
 	import Nav from './_components/Nav.svelte';
 	import Background from './_components/Background.svelte';
 	import Footer from './_components/Footer.svelte'
+	import ShoppingCart from './_components/ShoppingCart.svelte';
+	import { onMount } from 'svelte';
+	import { getCartItems } from '$lib/store';
 	import './styles.css';
 
 	/** @type {import('./$types').LayoutServerData} */

@@ -5,6 +5,22 @@ export const cartQuantity = writable('');
 export const cart = writable([]);
 export const search = writable('');
 
+
+export function localStorageStore(key, initial) {
+  const storedValue = typeof localStorage !== 'undefined' ? localStorage.getItem(key) : null;
+  const initialValue = storedValue !== null ? JSON.parse(storedValue) : initial;
+
+  const store = writable(initialValue);
+
+  store.subscribe(value => {
+      if (typeof localStorage !== 'undefined') {
+          localStorage.setItem(key, JSON.stringify(value));
+      }
+  });
+
+  return store;
+}
+
 export const getCartItems = async () => {
   let cartId = JSON.parse(localStorage.getItem('cartId'));
 

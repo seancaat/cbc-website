@@ -45,6 +45,7 @@
 
   async function loadCart() {
     const res = await getCartItems();
+    console.log(res);
     cartItems = res?.body?.data?.cart?.lines?.edges;
   }
 
@@ -156,6 +157,13 @@
 
 	li a {
 		text-decoration: none;
+	}
+
+  .shopping-cart-wrap {
+		position: fixed;
+		top: 0;
+		right: 0;
+		z-index: 9999;
 	}
 	
 </style>
