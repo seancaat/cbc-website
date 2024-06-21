@@ -1,9 +1,9 @@
 // @ts-ignore
-import { VITE_SHOPIFY_STORE_URL, VITE_SHOPIFY_API_ENDPOINT, VITE_SHOPIFY_STOREFRONT_API_TOKEN } from '$env/static/public';
+import { env } from '$env/dynamic/public';
 
 export async function shopifyFetch({ query, variables }) {
-  const endpoint = VITE_SHOPIFY_API_ENDPOINT;
-  const key = VITE_SHOPIFY_STOREFRONT_API_TOKEN;
+  const endpoint = env.VITE_SHOPIFY_API_ENDPOINT;
+  const key = env.VITE_SHOPIFY_STOREFRONT_API_TOKEN;
 
   try {
     const result = await fetch(endpoint, {
