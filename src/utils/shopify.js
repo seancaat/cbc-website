@@ -1,14 +1,9 @@
 // @ts-ignore
-
-import { VITE_SHOPIFY_STORE_URL, VITE_SHOPIFY_API_ENDPOINT, VITE_SHOPIFY_STOREFRONT_API_TOKEN } from '$env/static/private';
-
+import { VITE_SHOPIFY_STORE_URL, VITE_SHOPIFY_API_ENDPOINT, VITE_SHOPIFY_STOREFRONT_API_TOKEN } from '$env/static/public';
 
 export async function shopifyFetch({ query, variables }) {
-  const endpoint =
-    VITE_SHOPIFY_API_ENDPOINT;
-  const key =
-    VITE_SHOPIFY_STOREFRONT_API_TOKEN;
-
+  const endpoint = VITE_SHOPIFY_API_ENDPOINT;
+  const key = VITE_SHOPIFY_STOREFRONT_API_TOKEN;
 
   try {
     const result = await fetch(endpoint, {
@@ -253,10 +248,11 @@ export async function loadCart(cartId) {
 
 // @ts-ignore
 export async function getProduct(handle) {
+  console.log('in tha function')
   return shopifyFetch({
     query: ` 
-        query getProduct($handle: String!) {
-            productByHandle(handle: $handle) {
+        query getProductByHandle($handle: String!) {
+            product(handle: $handle) {
                 id
                 handle
                 availableForSale

@@ -1,9 +1,43 @@
 <script>
+  import { getCartItems } from '$lib/store.js';
+
   export let data;
+  console.log(data);
 
   let title = data.product.title;
   let images = data.product.images.edges;
   let description = data.product.descriptionHtml;
+
+  let selectedOptions = {};
+  let cartLoading = false;
+
+  async function addToCart() {
+    cartLoading = true;
+    let variantId;
+    let cartId;
+
+    if (typeof window !== 'undefined') {
+      cartId = JSON.parse(localStorage.getItem('cartId'));
+    }
+
+    data.product.variants.edges.forEach((variant) => {
+      let result = variant.node.selectedOptions.every((option) => {
+        return selectedOptions[option.name] === option.value;
+      });
+      if (result) {
+        variantId = variant.node.id;
+      }
+    });
+
+    await fetch('/cart.json', {
+      method: 'PATCH',
+      body: JSON.stringify({ cartId: cartId, variantId: variantId })
+    });
+    // Wait for the API to finish before updating cart items
+    await getCartItems();
+
+    cartLoading = false;
+  }
 </script>
 
 <svelte:head>
@@ -15,7 +49,7 @@
     <main>
       <h1>{title}</h1>
       <p>{@html description}</p>
-      <button>Add to cart</button>
+      <button on:click={ addToCart() }>Add to cart</button>
     </main>
     
     <aside>
@@ -33,6 +67,7 @@
     max-width: calc(100% - 40px);
     margin: 6rem auto;
     flex-direction: row-reverse;
+    justify-content: center;
     gap: 3rem;
   }
 
@@ -43,7 +78,7 @@
   }
 
   h1 {
-    font-size: 36px;
+    font-size: 48px;
   }
 
   img {

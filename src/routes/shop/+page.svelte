@@ -5,12 +5,10 @@
 	export let data;
 	let collections = data.props;
 
-	$: console.log(collections[1].products[0].images.edges[0].node);
-
 </script>
 
 <svelte:head>
-	<title>Shop</title>
+	<title>Shop CBC Merch</title>
 	<meta name="description" content="About this app" />
 	<script src="https://cdn.shopify.com/shopifycloud/app-bridge.js"></script>
 </svelte:head>
@@ -22,23 +20,22 @@
 			<h2>{collection.title}</h2>
 			{#each collection.products as product }
 				<div class="product">
-					<h2>
 						<a href={`/products/${product.handle}`}>
 							{#each product.images.edges as {node} }
 								<img src={node.url} alt={node.altText} width="200" />
 							{/each}
 						</a>
-						<p class="product-name">
-							<a href={`/products/${product.handle}`}>
-								{product.title}
-							</a>
+						<div class="product-name">
+							<h2>
+								<a href={`/products/${product.handle}`}>
+									{product.title}
+								</a>
+							</h2>
 							<span class="spacer"></span>
 							<span>
 								${product.priceRange.maxVariantPrice.amount}0
 							</span>
-						</p>
-					</h2>
-					
+						</div>
 				</div>
 			{/each}
 		{/each}
@@ -58,7 +55,13 @@
 		margin-top: 0.25em;
 		display: flex;
 		justify-content: space-between;
+		align-content: center;
 		margin-bottom: 2em;
+	}
+
+	h2 {
+		margin-top: 0; 
+		margin-bottom: 0;
 	}
 
 	.text-column {

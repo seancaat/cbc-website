@@ -62,22 +62,22 @@
     {
       name:"2023 Autumn Classic Jersey",
       price: "$60",
-      href: "shop/products/cbc-official-reversible-2023-tournament-mesh-jersey",
+      href: "products/cbc-official-reversible-2023-tournament-mesh-jersey",
     },
     {
       name:"The Triple Threat Hat",
       price: "$38",
-      href: "shop/products/the-triple-threat-hat",
+      href: "products/the-triple-threat-hat",
     },
     {
       name:"The Manifesto Tee",
       price: "$48",
-      href: "shop/products/the-manifesto-tee",
+      href: "products/the-manifesto-tee",
     },
     {
       name: "Chameleon Drawstring Backpack",
       price: "$15",
-      href: "shop/products/chameleon-drawstring-backpacks",
+      href: "products/chameleon-drawstring-backpacks",
     }
   ];
 
@@ -118,18 +118,18 @@
   let merch2024 = [
     {
       name:"Net Bag",
-      price: "$90",
-      href: "shop/products/net-bag"
+      price: "$128",
+      href: "products/net-bag"
     },
     {
       name:"All Star Shorts",
       price: "$48",
-      href: "shop/products/all-star-shorts"
+      href: "products/all-star-shorts"
     },
     {
       name:"Turbo Socks",
       price: "$16",
-      href: "shop/products/cbc-turbo-socks"
+      href: "products/cbc-turbo-socks"
     }
   ];
 

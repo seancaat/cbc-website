@@ -22,84 +22,84 @@ export async function load() {
   }
 }
 
-async function getAllProducts() {
-  const productQuery = `
-    query {
-    products(first:10) {
-      edges{
-            node {
-                id
-                handle
-                availableForSale
-                title
-                description
-                descriptionHtml
-                options {
-                    id
-                    name
-                    values
-                }
-                priceRange {
-                    maxVariantPrice {
-                        amount
-                        currencyCode
-                    }
-                    minVariantPrice {
-                        amount
-                        currencyCode
-                    }
-                }
-                variants(first: 4) {
-                    pageInfo {
-                        hasNextPage
-                        hasPreviousPage
-                    }
-                    edges {
-                        node {
-                            id
-                            title
-                            sku
-                            availableForSale
-                            requiresShipping
-                            selectedOptions {
-                                name
-                                value
-                            }
-                            priceV2 {
-                                amount
-                                currencyCode
-                            }
-                            compareAtPriceV2 {
-                                amount
-                                currencyCode
-                            }
-                        }
-                    }
-                }
-                images(first: 1) {
-                    pageInfo {
-                        hasNextPage
-                        hasPreviousPage
-                    }
-                    edges {
-                        node {
-                        originalSrc
-                        altText
-                        width
-                        height
-                        }
-                    }
-                }
-            }
-        }
-      }
-    }`;
+// async function getAllProducts() {
+//   const productQuery = `
+//     query {
+//     products(first:10) {
+//       edges{
+//             node {
+//                 id
+//                 handle
+//                 availableForSale
+//                 title
+//                 description
+//                 descriptionHtml
+//                 options {
+//                     id
+//                     name
+//                     values
+//                 }
+//                 priceRange {
+//                     maxVariantPrice {
+//                         amount
+//                         currencyCode
+//                     }
+//                     minVariantPrice {
+//                         amount
+//                         currencyCode
+//                     }
+//                 }
+//                 variants(first: 4) {
+//                     pageInfo {
+//                         hasNextPage
+//                         hasPreviousPage
+//                     }
+//                     edges {
+//                         node {
+//                             id
+//                             title
+//                             sku
+//                             availableForSale
+//                             requiresShipping
+//                             selectedOptions {
+//                                 name
+//                                 value
+//                             }
+//                             priceV2 {
+//                                 amount
+//                                 currencyCode
+//                             }
+//                             compareAtPriceV2 {
+//                                 amount
+//                                 currencyCode
+//                             }
+//                         }
+//                     }
+//                 }
+//                 images(first: 1) {
+//                     pageInfo {
+//                         hasNextPage
+//                         hasPreviousPage
+//                     }
+//                     edges {
+//                         node {
+//                         originalSrc
+//                         altText
+//                         width
+//                         height
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//       }
+//     }`;
 
-  const {data, errors, extensions} = await client.request(productQuery);
+//   const {data, errors, extensions} = await client.request(productQuery);
 
-  // console.log(data.products.edges);
-  return data.products.edges;
-}
+//   // console.log(data.products.edges);
+//   return data.products.edges;
+// }
 
 async function getCollections() {
   const collectionQuery = 
