@@ -13,7 +13,19 @@
   </h1>
   <p>CBC Community Spotlight</p>
 
-  <section class='entry'>
+  <section class="entry">
+    <p>
+      An old basketball truism: who controls the paint controls the game
+    </p>
+    <p>
+      But sometimes in a creative act we have to lose control, to surrender to collective energies and go with the flow. In the paint, everything is possible.
+    </p>
+    <p>
+      Come back soon to see the latest projects from CBC artist hoopers.
+    </p>
+  </section>
+
+  <!-- <section class='entry'>
     <h2>GUAVABABA - GB Stories Vol. 1</h2>
     <p>Andrew Liu, Connor Sen Warnick, Benji Hsu</p>
     <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/907294942?h=f9d5d36a74&title=0&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
@@ -25,7 +37,7 @@
     <p>Connor Sen Warnick</p>
     <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/775998654?h=b618a89590&title=0&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tellus risus, pulvinar sed feugiat nec, tempor in nibh. </p>
-  </section>
+  </section> -->
   
 </div>
 
@@ -52,7 +64,7 @@
   }
 
   .entry:last-of-type {
-    margin-top: 0;
+    /* margin-top: 0; */
     border-bottom: 2px solid rgba(255, 255, 255, 0.516);
   }
 

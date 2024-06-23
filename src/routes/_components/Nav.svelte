@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import { createCart } from '$utils/shopify';
-	import { getCartItems } from '$lib/store';
+	import { getCartItems, localStorageStore } from '$lib/store';
 
 	import ShoppingCart from './ShoppingCart.svelte';
 
@@ -10,12 +10,17 @@
   let cartCreatedAt;
   let cartItems = [];
 
+  // initialize stores
+  const cartIdStore = localStorageStore('cartId');
+  const cartCreatedAtStore = localStorageStore('cartCreatedAt');
+  const checkoutUrlStore = localStorageStore('cartCreatedAt');
+
 	onMount(async () => {
     if (typeof window !== 'undefined') {
 
-      cartId = JSON.parse(localStorage.getItem('cartId'));
-      cartCreatedAt = JSON.parse(localStorage.getItem('cartCreatedAt'));
-      checkoutUrl = JSON.parse(localStorage.getItem('cartUrl'));
+      cartId = JSON.parse($cartIdStore);
+      cartCreatedAt = JSON.parse($cartCreatedAtStore);
+      checkoutUrl = JSON.parse($checkoutUrlStore);
 
       let currentDate = Date.now();
       let difference = currentDate - cartCreatedAt;
@@ -33,9 +38,9 @@
     const cartRes = await createCart();
 
     if (typeof window !== 'undefined') {
-      localStorage.setItem('cartCreatedAt', Date.now());
-      localStorage.setItem('cartId', JSON.stringify(cartRes.body?.data?.cartCreate?.cart?.id));
-      localStorage.setItem(
+      localStorageStore('cartCreatedAt', Date.now());
+      localStorageStore('cartId', JSON.stringify(cartRes.body?.data?.cartCreate?.cart?.id));
+      localStorageStore(
         'cartUrl',
         JSON.stringify(cartRes.body?.data?.cartCreate?.cart?.checkoutUrl)
       );
@@ -111,7 +116,7 @@
 		</ul>
 	</nav>
 
-	<div class="shopping-cart-wrap">
+	<!-- <div class="shopping-cart-wrap">
 		<ShoppingCart
 			items={cartItems}
       on:click={hideCart}
@@ -120,7 +125,7 @@
       on:getCheckoutUrl={getCheckoutUrl}
       bind:loading
 		/>
-	</div>
+	</div> -->
 	
 </header>
 

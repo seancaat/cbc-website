@@ -80,17 +80,18 @@
     }
   ];
 
+  // {
+  //     src: netbag_img_2,
+  //     gridStart: 1,
+  //     gridEnd: 7
+  //   }, 
+  //   {
+  //     src: netbag_img_1,
+  //     gridStart: 4,
+  //     gridEnd: 8
+  //   }, 
+
   let images2024 = [
-    {
-      src: netbag_img_2,
-      gridStart: 1,
-      gridEnd: 7
-    }, 
-    {
-      src: netbag_img_1,
-      gridStart: 4,
-      gridEnd: 8
-    }, 
     {
       src: turbo_socks,
       gridStart: 2,
@@ -113,12 +114,12 @@
     },
  
   ];
+    //  {
+    // name:"Net Bag",
+    //   price: "$128",
+    //   href: "products/net-bag"
+    // },
   let merch2024 = [
-    {
-      name:"Net Bag",
-      price: "$128",
-      href: "products/net-bag"
-    },
     {
       name:"All Star Shorts",
       price: "$48",

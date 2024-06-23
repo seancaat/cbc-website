@@ -2,6 +2,8 @@
 	import Logo from '$lib/icons/Logo.svelte';
   import src from '$lib/images/dustin.jpg';
 
+  export let forecast; 
+
   export let manifesto = ""
   let splitManifesto = ["", ""];
 
@@ -19,7 +21,7 @@
 </script>
 
 <section>
-  <div class="text-wrapper">
+  <div class="lead-wrapper">
   	<h1>
   		<span>
   			{splitManifesto[0]}
@@ -28,22 +30,51 @@
   		</span>
   	</h1>
   </div>
+  <div class="info-wrapper">
+    <div>
+      <h2>Weekly Runs</h2>
+      <ul>
+        <li>Sundays at 10AM</li>
+        <li><a target="_blank" href="https://www.google.com/maps/place/Columbus+Park+Court/@40.7144694,-74.0004033,19.22z/data=!4m6!3m5!1s0x89c25bfef2806249:0xfd4015dc18a21f8e!8m2!3d40.7143152!4d-73.9998263!16s%2Fg%2F11gwmphlyl?entry=ttu">Columbus Park, NYC</a></li>
+      </ul>
+      </div>
+      <div>
+      <h2>Sunday Forecast</h2>
+      <ul>
+        <li class="forecast">
+          <a href="http://weather.gov" target="_blank">
+            {forecast.temperature}º F, {forecast.probabilityOfPrecipitation.value}% chance of rain
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
 </section>
 
 <style>
   section {
     color: white;
     height: 70vh;
-  }
-
-  .text-wrapper {
-    height: 70vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    max-width: calc(100% - 30px);
+  }
+
+  .lead-wrapper, .info-wrapper {
+    max-width: 960px;
+    width: calc(100% - 30px);
     margin: 0 auto;
+  }
+
+  .lead-wrapper {
+    /* outline: 1px solid red; */
+  }
+
+  .info-wrapper {
+    /* outline: 1px solid gold; */
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
   }
 
   h1 {
@@ -52,10 +83,29 @@
     max-width: 20em;
   }
 
+  h2 {
+    font-size: 18.72px;
+    text-transform: uppercase;
+    margin-bottom: 0.25em;
+    letter-spacing: 0.03em;
+  }
+
+  li {
+    /* font-weight: 100; */
+  }
+
   @media screen and (max-width: 1024px) {
     h1 {
       font-size: 28px;
       max-width: unset;
+    }
+
+    h2 {
+      font-size: 1rem;
+    }
+
+    li {
+      font-size: 0.75rem;
     }
   }
 

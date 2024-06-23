@@ -55,6 +55,11 @@ body {
 	color: white;
 }
 
+ul {
+	list-style-type: none;
+	padding-left: 0;
+}
+
 a {
 	color: inherit;
 }

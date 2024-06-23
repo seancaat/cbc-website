@@ -1,7 +1,12 @@
 <script>
-  import { cart, getCartItems } from '$lib/store.js';
+  import { cart, getCartItems, localStorageStore } from '$lib/store.js';
 
   export let data;
+
+  // change this to a subscribe
+  const cartIdStore = localStorageStore('cartId', 'asfasf');
+
+  // console.log($cartIdStore);
 
   let title = data.product.title;
   let images = data.product.images.edges;
@@ -12,12 +17,13 @@
 
   async function addToCart() {
     cartLoading = true;
+
     let variantId;
     let cartId;
 
-    // if (typeof window !== 'undefined') {
-    cartId = JSON.parse(localStorage.getItem('cartId'));
-    // }
+    if (typeof window !== 'undefined') {
+      cartId = JSON.parse($cartIdStore);
+    }
 
     data.product.variants.edges.forEach((variant) => {
       let result = variant.node.selectedOptions.every((option) => {
