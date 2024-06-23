@@ -95,7 +95,7 @@
     {
       src: turbo_socks,
       gridStart: 2,
-      gridEnd: 7
+      gridEnd: 7,
     },
     {
       src: as_img_3,
