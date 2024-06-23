@@ -16,10 +16,10 @@
     <li><a target="_blank" href="mailto:chinatownbasketballclub@gmail.com">Email</a></li>
   </ul>
 
-  <h3>SUNDAY FORECAST</h3>
+  <!-- <h3>SUNDAY FORECAST</h3>
   <p class="forecast">
     <a href="http://weather.gov" target="_blank">{data.temperature}º F, {data.probabilityOfPrecipitation.value}% chance of rain</a>
-  </p>
+  </p> -->
 
   <p class="copyright">©Chinatown Basketball Club. All rights reserved.</p>
 </footer>
