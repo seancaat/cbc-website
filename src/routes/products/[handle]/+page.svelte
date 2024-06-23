@@ -54,7 +54,8 @@
     <main>
       <h1>{title}</h1>
       <p>{@html description}</p>
-      <button on:click={ addToCart }>Add to cart</button>
+      <p>For inquiries, email <a href="mailto:chinatownbasketballclub@gmail.com">chinatownbasketballclub@gmail.com</a></p>
+      <!-- <button on:click={ addToCart }>Add to cart</button> -->
     </main>
     
     <aside>
@@ -122,10 +123,17 @@
   @media screen and (max-width: 1024px) {
     .product {
       flex-direction: column-reverse;
+      gap: 0;
     }
 
     main {
       position: relative;
+      top: 0;
+    }
+
+    h1 {
+      /* margin-top: 0; */
+      
     }
 
     aside {

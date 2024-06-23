@@ -18,7 +18,7 @@
 
   @media screen and (min-width: 1024px) {
     .grid-wrapper {
-      max-width: 900px;
+      max-width: 960px;
       /* grid-template-columns: repeat(18, 1fr);  */
     }
   }

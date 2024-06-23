@@ -31,6 +31,10 @@
     max-width: calc(100% - 30px);
   }
 
+	.text-column p {
+		/* font-weight: 100; */
+	}
+
 	figure {
 		margin-left: 0;
 		margin-right: 0;
@@ -46,5 +50,10 @@
     .text-column {
       max-width: 500px;
     }
+
+		.text-column p {
+			font-size: 20px;
+			line-height: 1.4;
+		}
   }
 </style>

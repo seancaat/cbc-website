@@ -8,10 +8,10 @@
 </svelte:head>
 
 <div class="text-column">
-	<h1>
+	<!-- <h1>
     <span>IN<br>THE<br>PAINT</span>
   </h1>
-  <p>CBC Community Spotlight</p>
+  <p>CBC Community Spotlight</p> -->
 
   <section class="entry">
     <p>
@@ -63,6 +63,10 @@
     padding-bottom: 3rem;
   }
 
+  .entry p {
+    max-width: 400px;
+  }
+
   .entry:last-of-type {
     /* margin-top: 0; */
     border-bottom: 2px solid rgba(255, 255, 255, 0.516);
@@ -79,7 +83,6 @@
   } */
 
 	.text-column {
-    margin: 10rem auto;
     position: relative;
     z-index: 2;
     max-width: calc(100% - 30px);

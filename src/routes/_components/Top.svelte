@@ -1,6 +1,6 @@
 <script>
 	import Logo from '$lib/icons/Logo.svelte';
-  import src from '$lib/images/dustin.jpg';
+  import GridWrapper from './Lookbook/GridWrapper.svelte';
 
   export let forecast; 
 
@@ -20,7 +20,7 @@
 
 </script>
 
-<section>
+<section class='top'>
   <div class="lead-wrapper">
   	<h1>
   		<span>
@@ -30,15 +30,17 @@
   		</span>
   	</h1>
   </div>
-  <div class="info-wrapper">
+
+  <GridWrapper>
+    <div class='info-wrapper'>
     <div>
       <h2>Weekly Runs</h2>
       <ul>
         <li>Sundays at 10AM</li>
         <li><a target="_blank" href="https://www.google.com/maps/place/Columbus+Park+Court/@40.7144694,-74.0004033,19.22z/data=!4m6!3m5!1s0x89c25bfef2806249:0xfd4015dc18a21f8e!8m2!3d40.7143152!4d-73.9998263!16s%2Fg%2F11gwmphlyl?entry=ttu">Columbus Park, NYC</a></li>
       </ul>
-      </div>
-      <div>
+    </div>
+    <div>
       <h2>Sunday Forecast</h2>
       <ul>
         <li class="forecast">
@@ -49,33 +51,29 @@
       </ul>
     </div>
   </div>
+  </GridWrapper>
+
 </section>
 
 <style>
-  section {
+  section.top {
     color: white;
-    height: 70vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    margin: 12rem auto 10rem;
   }
 
-  .lead-wrapper, .info-wrapper {
+  .lead-wrapper {
     max-width: 960px;
     width: calc(100% - 30px);
     margin: 0 auto;
   }
 
-  .lead-wrapper {
-    /* outline: 1px solid red; */
-  }
-
   .info-wrapper {
-    /* outline: 1px solid gold; */
+    grid-column: 1 / -1;
     display: flex;
     flex-direction: row;
     gap: 2em;
   }
+
 
   h1 {
     position: relative;
@@ -91,10 +89,17 @@
   }
 
   li {
-    /* font-weight: 100; */
+    font-weight: 100;
+    font-size: 20px;
+    line-height: 1.4;
   }
 
   @media screen and (max-width: 1024px) {
+    section.top {
+      color: white;
+      margin: 6rem auto 4rem;
+    }
+
     h1 {
       font-size: 28px;
       max-width: unset;
@@ -105,7 +110,7 @@
     }
 
     li {
-      font-size: 0.75rem;
+      font-size: 1rem;
     }
   }
 

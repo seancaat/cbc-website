@@ -4,7 +4,7 @@
 
 <footer>
   <h2><i>CHINATOWN BASKETBALL CLUB</i></h2>
-  <h3>DETAILS</h3>
+  <h3>WEEKLY RUNS</h3>
   <ul>
     <li>Sundays at 10AM</li>
     <li><a target="_blank" href="https://www.google.com/maps/place/Columbus+Park+Court/@40.7144694,-74.0004033,19.22z/data=!4m6!3m5!1s0x89c25bfef2806249:0xfd4015dc18a21f8e!8m2!3d40.7143152!4d-73.9998263!16s%2Fg%2F11gwmphlyl?entry=ttu">Columbus Park, NYC</a></li>
@@ -18,9 +18,7 @@
 
   <h3>SUNDAY FORECAST</h3>
   <p class="forecast">
-    {data.temperature}º F, {data.probabilityOfPrecipitation.value}% chance of rain
-    <br>
-    via <a href="http://weather.gov" target="_blank">weather.gov</a>
+    <a href="http://weather.gov" target="_blank">{data.temperature}º F, {data.probabilityOfPrecipitation.value}% chance of rain</a>
   </p>
 
   <p class="copyright">©Chinatown Basketball Club. All rights reserved.</p>
@@ -59,6 +57,7 @@
 
   .copyright {
     margin-top: 60px;
+		font-size: 1rem;
   }
 
 	@media (max-width: 760px) {
