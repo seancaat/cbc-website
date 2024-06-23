@@ -3,7 +3,6 @@
   import GridWrapper from './Lookbook/GridWrapper.svelte';
 
   export let forecast; 
-
   export let manifesto = ""
   let splitManifesto = ["", ""];
 
