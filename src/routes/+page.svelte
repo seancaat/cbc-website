@@ -10,7 +10,7 @@
 </script>
 
 <svelte:head>
-	<title>Home</title>
+	<title>Chinatown Basketball Club</title>
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
