@@ -1,9 +1,9 @@
 <script>
-   import src from '$lib/images/dustin.jpg';
+   import src from '$lib/images/dustin2.jpg';
 </script>
 
 <div class="image-wrapper">
-  <img class="topper-image" alt='' {src} />
+  <img aria-hidden="true" class="topper-image" alt='' {src} />
 </div>
 
 <style>

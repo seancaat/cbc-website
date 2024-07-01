@@ -32,12 +32,10 @@
 
   <GridWrapper>
     <div class='info-wrapper'>
-    <div>
-      <h2>Weekly Runs</h2>
-      <ul>
-        <li>Sundays at 10AM</li>
-        <li><a target="_blank" href="https://www.google.com/maps/place/Columbus+Park+Court/@40.7144694,-74.0004033,19.22z/data=!4m6!3m5!1s0x89c25bfef2806249:0xfd4015dc18a21f8e!8m2!3d40.7143152!4d-73.9998263!16s%2Fg%2F11gwmphlyl?entry=ttu">Columbus Park, NYC</a></li>
-      </ul>
+    <div class="schedule">
+      <p>Weekly Runs</p>
+      <p>
+        <span>Sundays at 10AM</span> at <a target="_blank" href="https://www.google.com/maps/place/Columbus+Park+Court/@40.7144694,-74.0004033,19.22z/data=!4m6!3m5!1s0x89c25bfef2806249:0xfd4015dc18a21f8e!8m2!3d40.7143152!4d-73.9998263!16s%2Fg%2F11gwmphlyl?entry=ttu">Columbus Park, NYC</a></p>
     </div>
     <!-- <div>
       <h2>Sunday Forecast</h2>
@@ -74,6 +72,10 @@
     gap: 2em;
   }
 
+  .schedule {
+    display: flex;
+    gap: 1em;
+  }
 
   h1 {
     position: relative;
