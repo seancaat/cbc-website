@@ -7,6 +7,7 @@
 
   function addOneItem(item, i) {
     loading = true;
+    // TODO: what if there is no more product
     dispatch('addProduct', {
       body: item.node.merchandise.id
     });
@@ -35,7 +36,14 @@
   async function checkout() {
     loading = true;
     let checkoutUrl = localStorage.getItem('cartUrl');
-    window.open(JSON.parse(checkoutUrl), '_blank');
+    if(checkoutUrl) {
+      window.open(checkoutUrl, '_blank');
+
+    }
+    else  {
+      // TODO: better error handling
+      console.error("cart not initialized")
+    }
     loading = false;
   }
 </script>
@@ -65,6 +73,8 @@
             alt={item.node.merchandise.product.title}
             decoding="async"
             loading="lazy"
+            height=100
+            width=100
             src={item.node.merchandise.product.images.edges[0].node.originalSrc}
           />
           <div>

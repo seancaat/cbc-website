@@ -1,9 +1,8 @@
 // @ts-ignore
-import { env } from '$env/dynamic/public';
-
 export async function shopifyFetch({ query, variables }) {
-  const endpoint = env.VITE_SHOPIFY_API_ENDPOINT;
-  const key = env.VITE_SHOPIFY_STOREFRONT_API_TOKEN;
+  
+  const endpoint = import.meta.env.VITE_SHOPIFY_API_ENDPOINT
+  const key = import.meta.env.VITE_SHOPIFY_STOREFRONT_API_TOKEN;
 
   try {
     const result = await fetch(endpoint, {
@@ -192,6 +191,7 @@ export async function getAllCollections() {
 
 // @ts-ignore
 export async function loadCart(cartId) {
+  console.log("Shopify loading cart", cartId)
   return shopifyFetch({
     query: `
         query GetCart($cartId: ID!) {
