@@ -1,12 +1,12 @@
 <script>
-  import { cart, getCartItems, localStorageStore } from '$lib/store.js';
+  import { getCartItems, getFromLocalStorage } from '$lib/storage.js';
+  import { cartVersion } from '$lib/stores';
+
+  function incrementCartVersion() {
+		cartVersion.update((n) => n + 1);
+	}
 
   export let data;
-
-  // change this to a subscribe
-  const cartIdStore = localStorageStore('cartId', 'asfasf');
-
-  // console.log($cartIdStore);
 
   let title = data.product.title;
   let images = data.product.images.edges;
@@ -22,13 +22,16 @@
     let cartId;
 
     if (typeof window !== 'undefined') {
-      cartId = JSON.parse($cartIdStore);
+      cartId = getFromLocalStorage('cartId');;
     }
 
     data.product.variants.edges.forEach((variant) => {
-      let result = variant.node.selectedOptions.every((option) => {
-        return selectedOptions[option.name] === option.value;
-      });
+      console.log("variant is",variant)
+      let result=true
+      // TODO: need variants in UI
+      // variant.node.selectedOptions.every((option) => {
+      //   return selectedOptions[option.name] === option.value;
+      // });
       if (result) {
         variantId = variant.node.id;
       }
@@ -40,7 +43,7 @@
     });
     // Wait for the API to finish before updating cart items
     await getCartItems();
-
+    incrementCartVersion()
     cartLoading = false;
   }
 </script>
@@ -55,7 +58,7 @@
       <h1>{title}</h1>
       <p>{@html description}</p>
       <p>For inquiries, email <a href="mailto:chinatownbasketballclub@gmail.com">chinatownbasketballclub@gmail.com</a></p>
-      <!-- <button on:click={ addToCart }>Add to cart</button> -->
+      <button on:click={ addToCart }>Add to cart</button>
     </main>
     
     <aside>

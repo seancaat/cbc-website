@@ -1,55 +1,32 @@
 <script>
 	import { onMount } from 'svelte';
-	import { createCart } from '$utils/shopify';
-	import { getCartItems, localStorageStore } from '$lib/store';
+	import { createAndSaveCart, getCartItems, getFromLocalStorage } from '$lib/storage';
 
 	import ShoppingCart from './ShoppingCart.svelte';
 
-	let cartId;
-  let checkoutUrl;
-  let cartCreatedAt;
   let cartItems = [];
 
   // initialize stores
-  const cartIdStore = localStorageStore('cartId');
-  const cartCreatedAtStore = localStorageStore('cartCreatedAt');
-  const checkoutUrlStore = localStorageStore('cartCreatedAt');
+  let cartId = getFromLocalStorage('cartId');
+  let cartCreatedAt = getFromLocalStorage('cartCreatedAt');
+  let checkoutUrl = getFromLocalStorage('checkoutUrl');
 
 	onMount(async () => {
+    console.log("mounting navs")
     if (typeof window !== 'undefined') {
-
-      cartId = JSON.parse($cartIdStore);
-      cartCreatedAt = JSON.parse($cartCreatedAtStore);
-      checkoutUrl = JSON.parse($checkoutUrlStore);
-
-      let currentDate = Date.now();
-      let difference = currentDate - cartCreatedAt;
-      let totalDays = Math.ceil(difference / (1000 * 3600 * 24));
-      let cartIdExpired = totalDays > 6;
-
-      if (cartId === 'undefined' || cartId === 'null' || cartIdExpired) {
-        await callCreateCart();
-			}
-      await loadCart();
+      if (cartId && cartCreatedAt) {
+      // TODO: validate cartCreatedAt
+      //   let totalDays = Math.ceil((Date.now() - cartCreatedAt) / (1000 * 3600 * 24));
+      // let cartIdExpired = totalDays > 6;
+        await loadCart();
+			} else {
+        await createAndSaveCart();
+      }
     }
   });
 
-	async function callCreateCart() {
-    const cartRes = await createCart();
-
-    if (typeof window !== 'undefined') {
-      localStorageStore('cartCreatedAt', Date.now());
-      localStorageStore('cartId', JSON.stringify(cartRes.body?.data?.cartCreate?.cart?.id));
-      localStorageStore(
-        'cartUrl',
-        JSON.stringify(cartRes.body?.data?.cartCreate?.cart?.checkoutUrl)
-      );
-    }
-  }
-
   async function loadCart() {
     const res = await getCartItems();
-    console.log(res);
     cartItems = res?.body?.data?.cart?.lines?.edges;
   }
 
@@ -70,6 +47,7 @@
   }
 
   async function addToCart(event) {
+    console.log(event)
     await fetch('/cart.json', {
       method: 'PATCH',
       body: JSON.stringify({ cartId: cartId, variantId: event.detail.body })
@@ -80,8 +58,9 @@
   }
 
   async function removeProduct(event) {
+    console.log("removeProduct", event)
     if (typeof window !== 'undefined') {
-      cartId = JSON.parse(localStorage.getItem('cartId'));
+      cartId = localStorage.getItem('cartId');
     }
     await fetch('/cart.json', {
       method: 'PUT',
@@ -116,7 +95,7 @@
 		</ul>
 	</nav>
 
-	<!-- <div class="shopping-cart-wrap">
+	<div class="shopping-cart-wrap">
 		<ShoppingCart
 			items={cartItems}
       on:click={hideCart}
@@ -125,7 +104,7 @@
       on:getCheckoutUrl={getCheckoutUrl}
       bind:loading
 		/>
-	</div> -->
+	</div>
 	
 </header>
 
